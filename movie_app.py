@@ -44,22 +44,21 @@ password = st.text_input("", type="password")
 if password != PASSWORD:
     st.warning("🔒 Enter the correct password to continue")
     st.stop()
-        
-def get_movie_poster(title, language=""):
+
+def get_movie_poster(title, year="", language=""):
     api_key = "a837a8ca"
 
-    url = f"https://www.omdbapi.com/?t={title}&apikey={api_key}"
+    search_title = f"{title} {language}"
+
+    url = f"https://www.omdbapi.com/?t={search_title}&y={year}&type=movie&apikey={api_key}"
 
     response = requests.get(url)
     data = response.json()
 
-    print(data)   # temporary check
-
     if data.get("Response") == "True" and data.get("Poster") != "N/A":
         return data["Poster"]
-    
-        return None
 
+    return None
 
 st.markdown("""
 <style>
@@ -122,7 +121,13 @@ with st.container():
 
     title = st.text_input("Movie Name")
     language = st.text_input("Language (optional)")
-    genre = st.text_input("Genre")
+    year = st.text_input("Year")
+    genre = st.multiselect(
+    "Genre",
+    ["Action", "Adventure", "Comedy", "Drama", "Fantasy",
+     "Horror", "Mystery", "Romance", "Sci-Fi",
+     "Thriller", "Animation", "Crime", "Family"]
+    )
     rating = st.slider("Rating", 0.0, 10.0, 5.0, 0.1)
     
     if rating <= 3:
@@ -166,13 +171,14 @@ with st.container():
         ]
         )   
 
-    poster = get_movie_poster(title, language)
+    poster = get_movie_poster(title, year, language)
 
     if st.button("Add Movie"):
 
         movie = {
             "title": title,
-            "genre": genre,
+            "year": year,
+            "genre": ", ".join(genre),
             "rating": rating,
             "one-liner": review,
             "vibe": vibes,
