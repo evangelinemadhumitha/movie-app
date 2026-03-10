@@ -10,5 +10,18 @@
             "mind-blowing"
         ],
         "poster": "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+        "title": "With Love",
+        "genre": "Romance Comedy",
+        "rating": 9.9,
+        "one-liner": "This is where two individuals, connected by hidden pasts and shared memories, navigate the complexities of modern relationships and emotional maturity.",
+        "vibe": [
+            "emotional",
+            "romantic",
+            "funny",
+            "dramatic"
+        ],
+        "poster": "https://m.media-amazon.com/images/M/MV5BYmI0ZmJhZDAtYjNjZC00OGFjLWJjMTktMWEzMzRkODY2ZTg5XkEyXkFqcGc@._V1_SX300.jpg"
     }
 ]
